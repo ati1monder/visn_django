@@ -1,0 +1,26 @@
+{% load static %}
+{% include 'managerpanel/header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі замовлення</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+<body>
+    <h1>Замовлення №{{ order.id }} від {{ order.user_created.username }}</h1>
+    <h2>Дата створення</h2>
+    <p>{{ order.created_at }}</p>
+    <h2>Назва</h2>
+    <p>{{ order.title }}</p>
+    <h2>Опис</h2>
+    <p>{{ order.description }}</p>
+    <h2>Файли</h2>
+    {% for file in files %}
+        <p><a href="{{file_root}}{{file.file}}">{{file.file}}</a></p>
+    {% endfor %}
+    <button class="item"><a href="{% url 'order_handling' order.id %}">Відповісти</a></button>
+    <button class="item"><a href="">Відхилити</a></button>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+    <head>
+        <body>
+            {% block content %}
+            <div class="header">
+                <img src="{% static 'img/logo.jpg' %}" style='width:100px; height:50px;' alt="header logo">
+                <ul class="ul_top_hypers">
+                    <li><a href="{% url 'admin_index' %}">Головна</a></li>
+                    <li><a href="">Менеджери</a></li>
+                    <li><a href="{% url 'users' %}">Користувачі</a></li>
+                    <li><a href="">Замовлення</a></li>
+                    <li><a href="{% url 'admin_index' %}?quit=1">Вихід</a></li>
+                </ul>
+            </div>
+            {% endblock %}
+        </body>
+    </head>
+</html>

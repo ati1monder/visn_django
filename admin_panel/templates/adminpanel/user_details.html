@@ -1,0 +1,23 @@
+{% load static %}
+{% include "adminpanel/header.html" %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Користувач</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+<body>
+    <h1>Користувач {{ user.username }}</h1>
+    <h2>Подробиці:</h2>
+    <h3>Пошта</h3>
+    <p>{{ user.email }}</p>
+    <h3>Номер телефону</h3>
+    <p>{{ user.number }}</p>
+    <h3>Дата реєстрації:</h3>
+    <p>{{ user.date_joined }} {{ user.user.date_joined }}</p>
+    <button class="item"><a href="">Редагувати</a></button>
+    <button class="item"><a href="">Видалити</a></button>
+</body>
+</html>

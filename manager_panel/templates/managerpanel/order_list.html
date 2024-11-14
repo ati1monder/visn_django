@@ -1,0 +1,44 @@
+{% load static %}
+{% include 'managerpanel/header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замовлення</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+<body>
+    <h1>Замовлення</h1>
+    <h2>Ваші замовлення</h2>
+    {% for sale in manager_orders %}
+        <div class="user_div">
+            <p class="item">№{{ sale.id }}</p>
+            <p class="item">Назва: {{ sale.order.title }}</p>
+            <p class="item">Створено: {{ sale.order.user_created.username }}</p>
+            <p class="item">Статус: {{ sale.get_status_display }}</p>
+            <p class="item"><a href="">Деталі</a></p>
+        </div>
+    {% endfor %}
+    <h2>Доступні замовлення</h1>
+        {% for sale in orders %}
+            <div class="user_div">
+                <p class="item">№{{ sale.id }}</p>
+                <p class="item">Назва: {{ sale.title }}</p>
+                <p class="item">Створено: {{ sale.user_created.username }}</p>
+                <p class="item"><a href="{% url 'order_details' sale.id %}">Деталі</a></p>
+                <p class="item"><a href="{% url 'order_handling' sale.id %}">Відповісти</a></p>
+            </div>
+        {% endfor %}
+    <h2>Замовлення в процесі</h2>
+        {% for sale in wip_orders %}
+            <div class="user_div">
+                <p class="item">№{{ sale.id }}</p>
+                <p class="item">Назва: {{ sale.order.title }}</p>
+                <p class="item">Створено: {{ sale.order.user_created.username }}</p>
+                <p class="item">Отримано: {{ sale.manager.username }}</p>
+                <p class="item">Статус: {{ sale.get_status_display }}</p>
+            </div>
+        {% endfor %}
+</body>
+</html>
